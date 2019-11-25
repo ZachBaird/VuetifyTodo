@@ -2,7 +2,7 @@
   <div class="home">
     <h1>This is the home page.</h1>
     
-    <v-btn class="hidden-md-and-down">Click Me</v-btn>
+    <v-btn class="hidden-sm-and-down" text color="pink">Click Me</v-btn>
   </div>
 </template>
 
