@@ -7,6 +7,22 @@
         <span>TODO</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-menu offset-y>
+        <template v-slot:activator="{on}">
+          <v-btn text v-on="on" color="pink">
+            <v-icon>mdi-chevron-down</v-icon>
+            <span>Menu</span>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            v-for="link in links"
+            :key="link.text"
+            router
+            :to="link.route"
+          >{{ link.text }}</v-list-item>
+        </v-list>
+      </v-menu>
       <v-btn text color="pink">
         <span style="margin-right: 5px;">Sign Out</span>
         <v-icon small>mdi-exit-to-app</v-icon>
@@ -19,6 +35,9 @@
             <img src="/avatar-1.png" alt="Avatar" />
           </v-avatar>
           <p class="white--text text-center subheading mt-1">Oreo</p>
+        </v-flex>
+        <v-flex class="mt-3 mb-4">
+          <Popup />
         </v-flex>
       </v-layout>
       <v-list>
@@ -36,8 +55,10 @@
 </template>
 
 <script>
+import Popup from "./Popup";
+
 export default {
-  name: "navbar",
+  components: { Popup },
   data() {
     return {
       drawer: false,

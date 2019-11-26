@@ -23,7 +23,6 @@
 
 <script>
 export default {
-  name: "projects",
   data() {
     return {
       projects: [

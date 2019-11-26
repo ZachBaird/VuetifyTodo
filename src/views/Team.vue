@@ -30,7 +30,6 @@
 
 <script>
 export default {
-  name: "team",
   data() {
     return {
       team: [

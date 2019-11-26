@@ -55,7 +55,6 @@
 // @ is an alias to /src
 
 export default {
-  name: "dashboard",
   data() {
     return {
       projects: [
