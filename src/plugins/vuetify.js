@@ -13,7 +13,8 @@ export default new Vuetify({
         primary: '#f83e70',
         success: '#3cd1c2',
         info: '#ffc0cb',
-        error: '#dc3545'
+        error: '#dc3545',
+        rose: '#b76e79'
       }
     }
   }

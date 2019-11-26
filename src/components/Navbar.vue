@@ -12,7 +12,15 @@
         <v-icon small>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" app class="primary lighten-2 white--text">
+    <v-navigation-drawer v-model="drawer" app class="rose white--text lighten-1">
+      <v-layout column align-center>
+        <v-flex class="mt-5">
+          <v-avatar size="100" class="rose">
+            <img src="/avatar-1.png" alt="Avatar" />
+          </v-avatar>
+          <p class="white--text text-center subheading mt-1">Oreo</p>
+        </v-flex>
+      </v-layout>
       <v-list>
         <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
           <v-list-item-action>
