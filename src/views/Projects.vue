@@ -5,7 +5,7 @@
     </h1>
     <v-container class="my-5">
       <v-expansion-panels accordion>
-        <v-expansion-panel v-for="project in myProjects" :key="project.title">
+        <v-expansion-panel v-for="project in myProjects" :key="project.id">
           <v-expansion-panel-header>{{ project.title }}</v-expansion-panel-header>
           <v-expansion-panel-content>
             <v-card>
@@ -22,60 +22,27 @@
 </template>
 
 <script>
+import db from "../fb";
+
 export default {
   data() {
     return {
-      projects: [
-        {
-          title: "Design main site refresh",
-          person: "Oreo",
-          due: "11th Dec 2019",
-          content:
-            "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-          status: "ongoing"
-        },
-        {
-          title: "Code main site",
-          person: "Oreo",
-          due: "19th Dec 2019",
-          content:
-            "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-          status: "ongoing"
-        },
-        {
-          title: "Browser test site",
-          person: "Oreo/Milk",
-          due: "21st Dec 2019",
-          content:
-            "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-          status: "backlog"
-        },
-        {
-          title: "Replace old site",
-          person: "Oreo",
-          due: "22nd Dec 2019",
-          content:
-            "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-          status: "backlog"
-        },
-        {
-          title: "Finish Vuetify intro",
-          person: "Oreo",
-          due: "11th Nov 2019",
-          content:
-            "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-          status: "overdue"
-        },
-        {
-          title: "Insult Oreo",
-          person: "Frost",
-          due: "15th Nov 2019",
-          content:
-            "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
-          status: "overdue"
-        }
-      ]
+      projects: []
     };
+  },
+  async created() {
+    await db.collection("projects").onSnapshot(res => {
+      const changes = res.docChanges();
+
+      changes.forEach(ch => {
+        if (ch.type === "added") {
+          this.projects.push({
+            ...ch.doc.data(),
+            id: ch.doc.id
+          });
+        }
+      });
+    });
   },
   computed: {
     myProjects() {

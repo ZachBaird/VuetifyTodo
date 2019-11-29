@@ -1,5 +1,9 @@
 <template>
   <nav>
+    <v-snackbar v-model="snackbar" :timeout="4000" top color="rose">
+      <span>Awesome! You added a new project!</span>
+      <v-btn text color="white" @click="snackbar=false">Close</v-btn>
+    </v-snackbar>
     <v-app-bar flat app>
       <v-app-bar-nav-icon class="pink--text darken-1" @click="drawer=!drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase pink--text">
@@ -37,7 +41,7 @@
           <p class="white--text text-center subheading mt-1">Oreo</p>
         </v-flex>
         <v-flex class="mt-3 mb-4">
-          <Popup />
+          <Popup @projectAdded="snackbar=true" />
         </v-flex>
       </v-layout>
       <v-list>
@@ -62,6 +66,7 @@ export default {
   data() {
     return {
       drawer: false,
+      snackbar: false,
       links: [
         { icon: "mdi-view-dashboard", text: "Dashboard", route: "/" },
         { icon: "mdi-folder", text: "My Projects", route: "/projects" },

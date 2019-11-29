@@ -22,7 +22,7 @@
           <span>Sort by assignee</span>
         </v-tooltip>
       </v-layout>
-      <v-card flat v-for="project in projects" :key="project.id">
+      <v-card flat v-for="project in projects" :key="project.title">
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
           <v-flex xs12 md6>
             <div class="caption grey--text">Project Title</div>
@@ -53,27 +53,49 @@
 
 <script>
 // @ is an alias to /src
-import db from "../fb";
 
 export default {
   data() {
     return {
-      projects: []
-    };
-  },
-  async created() {
-    await db.collection("projects").onSnapshot(res => {
-      const changes = res.docChanges();
-
-      changes.forEach(ch => {
-        if (ch.type === "added") {
-          this.projects.push({
-            ...ch.doc.data(),
-            id: ch.doc.id
-          });
+      projects: [
+        {
+          title: "Design main site refresh",
+          person: "Oreo",
+          due: "11th Dec 2019",
+          status: "ongoing"
+        },
+        {
+          title: "Code main site",
+          person: "Oreo",
+          due: "19th Dec 2019",
+          status: "ongoing"
+        },
+        {
+          title: "Browser test site",
+          person: "Oreo/Milk",
+          due: "21st Dec 2019",
+          status: "backlog"
+        },
+        {
+          title: "Replace old site",
+          person: "Oreo",
+          due: "22nd Dec 2019",
+          status: "backlog"
+        },
+        {
+          title: "Finish Vuetify intro",
+          person: "Oreo",
+          due: "11th Nov 2019",
+          status: "overdue"
+        },
+        {
+          title: "Insult Oreo",
+          person: "Frost",
+          due: "15th Nov 2019",
+          status: "overdue"
         }
-      });
-    });
+      ]
+    };
   },
   methods: {
     sortBy(prop) {
