@@ -4,17 +4,17 @@ URL: https://oreotodo.netlify.com/
 
 ## Tools
 
-*Editor: Visual Studio Code (recommended)
+* Editor: Visual Studio Code (recommended)
 
-*Environment: NPM.
+* Environment: NPM.
 
 ## Setup
 
-*Clone repository
+* Clone repository
 
-*Run npm install inside project directory
+* Run npm install inside project directory
 
-*Run npm run serve to run locally
+* Run npm run serve to run locally
 
 ## Description
 
