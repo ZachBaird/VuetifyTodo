@@ -1,29 +1,21 @@
-# oreo-todo
+# OreoTODO
 
-## Project setup
-```
-npm install
-```
+URL: https://oreotodo.netlify.com/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Tools
 
-### Compiles and minifies for production
-```
-npm run build
-```
+*Editor: Visual Studio Code (recommended)
 
-### Run your tests
-```
-npm run test
-```
+*Environment: NPM.
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Setup
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+*Clone repository
+
+*Run npm install inside project directory
+
+*Run npm run serve to run locally
+
+## Description
+
+This is a front-end only application using Vue.js and Vuetify.js. Vuerouter and Firebase feature in this application.
